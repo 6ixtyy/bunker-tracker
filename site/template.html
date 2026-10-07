@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunker Tracker</title>
+<style>
+:root {
+  --bg: #f6f5f1; --panel: #ffffff; --ground: #ecebe5; --ink: #1b1b1a; --muted: #6b6a66;
+  --line: #dedcd4; --strong: #2b2a28;
+  --exposed: #c8372d; --exposed-ink: #ffffff; --hidden: #1f8a52; --hidden-ink: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131312; --panel: #1c1c1a; --ground: #262624; --ink: #f0efea; --muted: #a09f99;
+    --line: #33322f; --strong: #d8d6ce;
+    --exposed: #e5564b; --exposed-ink: #1a0b09; --hidden: #3fb97a; --hidden-ink: #06180e;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1040px; margin: 0 auto; padding: 40px 16px 64px; }
+h1 { font-size: 30px; line-height: 1.15; margin: 0 0 8px; letter-spacing: -0.02em; }
+h2 { font-size: 18px; margin: 40px 0 12px; }
+p { margin: 0 0 12px; }
+a { color: inherit; }
+.lede { color: var(--muted); max-width: 70ch; }
+.meta { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); margin: 24px 0 12px; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 3px; }
+.chart { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.org { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+  display: flex; flex-direction: column; }
+.org header { padding: 12px 14px 0; display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.org header b { font-size: 15px; }
+.org header span { font-size: 12px; color: var(--muted); text-align: right; }
+.above { height: 300px; padding: 0 20%; display: flex; flex-direction: column; justify-content: flex-end;
+  border-bottom: 2px solid var(--strong); }
+.below { height: 120px; padding: 0 20% 8px; background: var(--ground); }
+.blk { border-radius: 4px; margin-top: 2px; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 600; font-variant-numeric: tabular-nums; overflow: hidden; min-height: 2px; }
+.blk.e { background: var(--exposed); color: var(--exposed-ink); }
+.blk.h { background: var(--hidden); color: var(--hidden-ink); }
+.blk.rest { opacity: 0.6; }
+.empty { font-size: 12px; color: var(--muted); text-align: center; padding-top: 10px; }
+.stat { padding: 12px 14px 14px; text-align: center; border-top: 1px solid var(--line); }
+.pct { font-size: 28px; font-weight: 700; line-height: 1.1; color: var(--exposed); font-variant-numeric: tabular-nums; }
+.pct.ok { color: var(--hidden); }
+.pct.na { color: var(--muted); }
+.none { height: 90px; border: 1px dashed var(--muted); border-radius: 4px; display: flex; align-items: center;
+  justify-content: center; color: var(--muted); font-size: 20px; margin-bottom: 2px; }
+.bar { height: 6px; border-radius: 3px; background: var(--hidden); margin: 8px 0 6px; overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--exposed); }
+.small { font-size: 12px; color: var(--muted); }
+.note { border-left: 3px solid var(--line); padding: 2px 0 2px 12px; color: var(--muted); max-width: 75ch; margin-top: 16px; }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 13px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-weight: 600; color: var(--muted); }
+tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; }
+td.addr { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.tag { display: inline-block; padding: 1px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; }
+.tag.e { background: var(--exposed); color: var(--exposed-ink); }
+.tag.h { background: var(--hidden); color: var(--hidden-ink); }
+ul { margin: 0; padding-left: 20px; color: var(--muted); max-width: 75ch; }
+li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <p class="meta"><a href="index.html">← overview</a></p>
+  <h1>Bunker Tracker</h1>
+  <p class="lede">How much of each institution's published Bitcoin reserves sits at addresses whose public key is already public, and how much is still hidden behind a hash.</p>
+  <p class="meta" id="meta"></p>
+
+  <div class="legend">
+    <span><i class="sw" style="background:var(--exposed)"></i>Exposed key (above ground)</span>
+    <span><i class="sw" style="background:var(--hidden)"></i>Hidden behind a hash (in the bunker)</span>
+    <span>One block = one address · number = thousand BTC</span>
+  </div>
+  <div class="chart" id="chart"></div>
+  <p class="note">Exposure is not a vulnerability today. It measures preparedness against a hypothetical future break of the signature scheme Bitcoin uses.</p>
+
+  <h2>Addresses</h2>
+  <div id="tables"></div>
+
+  <h2>Method and limits</h2>
+  <ul>
+    <li>An address counts as exposed if it is Taproot, has at least one confirmed spend, or the organization published its key or script off chain (for example a signed ownership message). Otherwise it counts as hidden.</li>
+    <li>Only addresses the organization itself published or publicly confirmed are tracked. Sources are listed below; Tether's is a news report quoting its CEO, because the original post has not been located.</li>
+    <li>Hidden means no known exposure. An address that has never spent could still share a key with one that has, which cannot be checked from outside.</li>
+    <li>Not checked yet: mempool spends and keys reused across addresses.</li>
+    <li>Organizations differ in what they publish: some list every reserve address, some one wallet, some only one product's reserves. The label on each card says what is covered.</li>
+    <li>A falling exposed balance does not prove a migration: funds moved to addresses outside the published list simply leave the tracker.</li>
+  </ul>
+  <h2>Sources</h2>
+  <ul id="sources"></ul>
+</main>
+<script>
+const SNAP = /*__SNAPSHOT__*/null;
+const fmt = (n, d = 0) => n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
+const btc = r => r.balance_sats / 1e8;
+// Round toward the middle so 99.96% never shows as 100% while hidden funds remain.
+const pct1 = p => p == null ? "–" : p > 99.9 && p < 100 ? "99.9" : p > 0 && p < 0.1 ? "0.1" : fmt(p, 1);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+document.getElementById("meta").textContent =
+  `Snapshot ${SNAP.generated_at.replace("T", " ").replace("Z", " UTC")} · block ${fmt(SNAP.tip_height)} · ${SNAP.tip_hash}`;
+
+const headlineRows = o => o.headline_roles ? o.addresses.filter(r => o.headline_roles.includes(r.role)) : o.addresses;
+const BASIS = { cold: "cold storage", treasury: "treasury", "cold+treasury": "cold storage + treasury", all_tracked: "all published addresses" };
+const maxStack = Math.max(...SNAP.orgs.flatMap(o => {
+  const rows = headlineRows(o);
+  return [rows.filter(r => r.exposed), rows.filter(r => !r.exposed)].map(g => g.reduce((s, r) => s + btc(r), 0));
+}));
+const PX = 280 / maxStack;
+
+function stack(rows, cls) {
+  const big = rows.filter(r => btc(r) * PX >= 4);
+  const rest = rows.filter(r => btc(r) * PX < 4 && r.balance_sats > 0);
+  const block = (v, title, extra = "") => {
+    const h = Math.max(2, v * PX - 2);
+    return `<div class="blk ${cls} ${extra}" title="${esc(title)}" style="height:${h}px">${h >= 16 ? fmt(v / 1000, v < 10000 ? 1 : 0) : ""}</div>`;
+  };
+  let html = big.map(r => block(btc(r), `${r.address} · ${fmt(btc(r), 2)} BTC`)).join("");
+  if (rest.length) {
+    const v = rest.reduce((s, r) => s + btc(r), 0);
+    html += block(v, `${rest.length} smaller addresses · ${fmt(v, 2)} BTC`, "rest");
+  }
+  return html;
+}
+
+document.getElementById("chart").innerHTML = SNAP.orgs.map(o => {
+  if (!o.addresses.length) return `<section class="org">
+    <header><b>${esc(o.name)}</b><span>not tracked</span></header>
+    <div class="above"><div class="none">?</div></div>
+    <div class="below"></div>
+    <div class="stat"><div class="pct na">–</div>
+      <div class="small">No publicly verifiable cold-storage addresses</div></div>
+  </section>`;
+  const rows = headlineRows(o), h = o.headline;
+  const exposed = rows.filter(r => r.exposed), hidden = rows.filter(r => !r.exposed && r.balance_sats > 0);
+  const basis = o.scope || BASIS[o.headline_basis] || o.headline_basis;
+  return `<section class="org">
+    <header><b>${esc(o.name)}</b><span>${basis}</span></header>
+    <div class="above">${stack(exposed, "e")}</div>
+    <div class="below">${hidden.length ? stack(hidden, "h") : '<div class="empty">nothing hidden</div>'}</div>
+    <div class="stat">
+      <div class="pct ${h.exposed_pct < 50 ? "ok" : ""}">${pct1(h.exposed_pct)}%</div>
+      <div class="small">exposed</div>
+      <div class="bar"><i style="width:${h.exposed_pct}%"></i></div>
+      <div class="small">${fmt(h.exposed_btc)} of ${fmt(h.total_btc)} BTC · ${h.address_count} address${h.address_count === 1 ? "" : "es"}</div>
+    </div>
+  </section>`;
+}).join("");
+
+const TOP = 12;
+const WHY = { spent_address: "has spent", taproot: "Taproot", pubkey_published: "key published by org" };
+const more = o => {
+  const n = o.addresses.filter(r => r.balance_sats > 0).length - TOP;
+  return n > 0 ? `<p class="small" style="margin:-12px 0 20px">Top ${TOP} by balance shown; ${n} more in the JSON export.</p>` : "";
+};
+document.getElementById("tables").innerHTML = SNAP.orgs.map(o => !o.addresses.length ? `
+  <p><b>${esc(o.name)}</b> <span class="small">· no publicly verifiable addresses. ${esc(o.research_note || "")}</span></p>` : `
+  <p><b>${esc(o.name)}</b> <span class="small">· ${o.all_tracked.address_count} address${o.all_tracked.address_count === 1 ? "" : "es"}, ${fmt(o.all_tracked.total_btc, 2)} BTC tracked${
+    o.claimed_reserves ? ` · its ${esc(o.claimed_reserves.as_of)} published figure was ${fmt(o.claimed_reserves.btc)} BTC` : ""}</span></p>
+  <div class="scroll" style="margin-bottom:20px"><table>
+    <tr><th>Address</th><th>Role</th><th>Type</th><th class="n">BTC</th><th class="n">Spends</th><th>State</th><th>Why</th></tr>
+    ${o.addresses.filter(r => r.balance_sats > 0).slice(0, TOP).map(r => `<tr>
+      <td class="addr"><a href="https://mempool.space/address/${esc(r.address)}">${esc(r.address)}</a></td>
+      <td>${esc(r.role)}</td><td>${esc(r.script_type)}</td>
+      <td class="n">${fmt(btc(r), 2)}</td><td class="n">${fmt(r.spent_txo_count)}</td>
+      <td><span class="tag ${r.exposed ? "e" : "h"}">${r.exposed ? "exposed" : "hidden"}</span></td>
+      <td class="small">${[WHY[r.reason], /custodian/i.test(r.notes) ? esc(r.notes) : ""].filter(Boolean).join(" · ")}</td></tr>`).join("")}
+  </table></div>
+  ${more(o)}`).join("");
+
+document.getElementById("sources").innerHTML = SNAP.orgs.map(o =>
+  o.sources.map(u => `<li>${esc(o.name)}: <a href="${esc(u)}">${esc(u)}</a></li>`).join("")).join("");
+</script>
+</body>
+</html>

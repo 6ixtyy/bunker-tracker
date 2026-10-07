@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunker Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.row { display: grid; grid-template-columns: 110px 1fr 64px; align-items: center; gap: 20px; padding: 17px 0; }
+.track { display: flex; gap: 4px; height: 16px; transform-origin: left; animation: grow .9s cubic-bezier(.2,.8,.2,1) both; }
+.track i { border-radius: 8px; min-width: 4px; }
+@keyframes grow { from { transform: scaleX(0); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .track { animation: none; } }
+.row .pct { text-align: right; font-size: 20px; }
+@media (max-width: 600px) { .row { grid-template-columns: 78px 1fr 52px; gap: 12px; } .row .pct { font-size: 17px; } }
+</style>
+</head>
+<body>
+<main><div id="chart"></div></main>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="shell.js"></script>
+<script>
+const MAX = Math.max(...ORGS.map(o => o.totalBtc));
+document.getElementById("chart").innerHTML = ORGS.map((o, i) => `
+  <div class="row" data-tip="${orgTip(o)}">
+    <div class="name">${esc(o.name)}</div>
+    <div><div class="track" style="width:${o.totalBtc / MAX * 100}%;animation-delay:${i * 70}ms" role="img" aria-label="${esc(o.name)} ${fmt(o.pct, 1)}% exposed">
+      ${o.exposedBtc ? `<i style="flex:${o.exposedBtc};background:var(--x)"></i>` : ""}${o.hiddenBtc ? `<i style="flex:${o.hiddenBtc};background:var(--h)"></i>` : ""}
+    </div></div>
+    <div class="pct">${pct0(o.pct)}%</div>
+  </div>`).join("");
+</script>
+</body>
+</html>

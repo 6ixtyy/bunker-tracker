@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunker Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+#chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+#chart rect { animation: fade .7s cubic-bezier(.2,.8,.2,1) both; }
+#chart text { font-family: inherit; }
+</style>
+</head>
+<body>
+<main><div id="chart"></div></main>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="shell.js"></script>
+<script>
+const W = 900, UP = 300, PW = 62, S = UP / MAX_EXPOSED, G = 60 + UP, DOWN = MAX_HIDDEN * S, H = G + DOWN + 64, step = W / ORGS.length;
+let s = "";
+ORGS.forEach((o, i) => {
+  const cx = step * (i + 0.5), x = cx - PW / 2, up = Math.max(o.exposedBtc * S - 5, 0), dn = Math.max(o.hiddenBtc * S - 5, 0);
+  s += `<g data-tip="${orgTip(o)}"><rect x="${x - 14}" y="0" width="${PW + 28}" height="${H}" fill="transparent"/>
+    ${up ? `<rect x="${x}" y="${G - 5 - up}" width="${PW}" height="${up}" rx="${Math.min(12, up / 2)}" fill="var(--x)" style="animation-delay:${i * 70}ms"/>` : ""}
+    ${dn ? `<rect x="${x}" y="${G + 5}" width="${PW}" height="${dn}" rx="${Math.min(12, dn / 2)}" fill="var(--h)" style="animation-delay:${i * 70 + 150}ms"/>` : ""}
+    <text class="pct" x="${cx}" y="${G - up - 20}" text-anchor="middle" font-size="24" fill="var(--ink)">${pct0(o.pct)}%</text>
+    <text class="name" x="${cx}" y="${H - 8}" text-anchor="middle" font-size="15" fill="var(--ink)">${esc(o.name)}</text></g>`;
+});
+s += `<line x1="0" x2="${W}" y1="${G}" y2="${G}" stroke="#3f3f46" stroke-width="1"/>`;
+document.getElementById("chart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Exposed BTC above the line and hidden BTC below, per institution">${s}</svg>`;
+</script>
+</body>
+</html>

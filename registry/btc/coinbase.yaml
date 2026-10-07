@@ -1,0 +1,409 @@
+org:
+  slug: coinbase
+  name: Coinbase
+  website: https://www.coinbase.com
+  scope: "cbBTC reserves only"
+  claimed_reserves:
+    btc: 94723.62
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    as_of: "2026-10-07"
+    note: "Total reserve shown on the cbBTC proof-of-reserves page"
+# Coinbase does not publish its exchange or custody cold-storage addresses.
+# These are only the addresses it lists as backing cbBTC.
+addresses:
+  - address: "bc1qwfkngwsl3n2yrnttsmv3q849arwjlxzay34v7e"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qfszruqaal85d88qvgx25e2ttq7zf6ze6kpc5h7"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q9e83uh7etgzmfrmjd389p7yjv5etsa6k3dq808"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qsefydr2r5ysjep7z4zelvz0ulmj29vlvarraqg"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qt8cewcxp50ywvwperagdr9xgn9zw8up9dq35j8"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q26umumjl7ha0acmyx5h64sdjqc4hnlg040yz6a"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qxhue44m9hw6gkf7szn6pk907lmaevnrptu923c"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q059cgrlumrmzd3jat4wmlz7ng3jcg9wc6j04ak"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q8lx6xnvasdthhh07fvd9py55t3gftpz6ujztl2"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qm4kfqrzzkjsvvqm95qsvx7g4rfumfaqrr4t6z7"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qy43uuskm60v805ey8up2gh5kw23exp2gqrht0v"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qepvxyw6wfr3jrsmh7t2xmyyqmmtvtwandnlrry"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q2z2kfsq70tygeegpk8vqgaepwc3tvj59xyu0ge"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q7m6whydduwncrtuy6p6jmu9yejghqer2du9rl4"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q8xmrw58we56y4hegw9q6548ua8a05n9u2cdrqv"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q0kcvhdhajd0vd8p66ssc8crg97ahf7x2c2zn5r"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qgf263kwygczp5v06umslgpdq9qcswv3ewesxfe"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qv4ex9zyhcs385mqzc9whrnhjjmw2xqhhy3dah2"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qv7pjljug2y3zvahdu025e4mcq6f5m6cn0w9rt4"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qyyfjmtl9s8s6wn3llt2ltzze978l5szfj7hr79"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qdvp374duyd755p8wkk0qg4tphwq5qyjavjmj5p"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qfm0gdkd483hfhuu78xy3chx0wdll5kqysgu070"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qhhh607cyqc8hza9dzxy2lqtze4md8yzttcuama"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qu5twxzks0qzzdklysvysunvd6srj7n3gcgkgu5"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q35mpmu5ueq6g7yz2y7pxyau2xczz5nujqjdfg6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qksjja8l90jd95zzk05jme857ejs5rx6hmn5mdd"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q4j5m5a8jvm8hhpfm9mk3t22eq2e6twuynlk5p5"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q833au4seakl479uxhffvg3ymq9zcvn0m7scnts"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qcc9t3raepdkr0kjgnk94m0vd7wrfug8vpkdgh6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q5lcesvszrlt9rcxawxu2m50vnan43c000lmyuu"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1q99jztuwgtcmxen0mpvjj23sjcjwp4d7eey5u3x"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qupmktle0fctwa4xsanrwwqzxxa5pjef943e220"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qlmqufhte3lc2uypt3f63xv4xlccfkrld2qkkc5"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qagudh93sljgqu69ehrd3q4fnhfvz85cjrsh7jl"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qkq2ykxhf8rwsev53s0ue69l8dpldx7q0g5szuk"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "bc1qd38acwh6pc44tpuz3me77d8pjtf3qvgmvkqg9z"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "1HyzPvCHzwGGYAfYgSrYvSLYhTBNgmZYnp"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "1MJLWCneHUgswuysdygkAAuHTzN5nzWUxs"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "1CtCVztmq8gKJtPpcSPhkUqujpshygCU3X"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "12REWGeFkYw5bouibpXndu2oRLjrd6d3mh"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "13gARQQzhejPDmkeUNqPjRvZTAaedsieEp"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "1JNoPvhh79LKvwu1JfaQk7AuiZZsJ7CYUd"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "16MBo1VsD5yTX1fiPzQ4xaJUoKNHL2i4jn"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"
+  - address: "1AwJJECEXzn439gERjD6S1wKSTD4qF2V6N"
+    role: unknown
+    confidence: high
+    source_url: "https://www.coinbase.com/cbbtc/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "cbBTC backing reserve"

@@ -1,0 +1,29 @@
+:root { --bg: #09090b; --ink: #f4f4f5; --muted: #71717a; --faint: #1f1f23; --x: #e4603f; --h: #3aa98a; }
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.4 "Geist", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; }
+header, footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 28px; }
+.brand { font-weight: 600; letter-spacing: -0.01em; }
+nav { display: flex; gap: 2px; background: var(--faint); border-radius: 999px; padding: 3px; }
+nav a { color: var(--muted); text-decoration: none; font-size: 13px; padding: 5px 14px; border-radius: 999px; transition: color .15s; }
+nav a:hover { color: var(--ink); }
+nav a[aria-current] { background: var(--ink); color: var(--bg); }
+main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px 28px 32px; }
+#chart { width: 100%; max-width: 940px; }
+footer { color: var(--muted); font-size: 12px; flex-wrap: wrap; }
+.key { display: flex; gap: 18px; }
+.key span { display: inline-flex; align-items: center; gap: 7px; }
+.key i { width: 8px; height: 8px; border-radius: 50%; }
+.name { font-weight: 500; letter-spacing: -0.01em; }
+.pct { font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.dim { color: var(--muted); }
+.tip { position: fixed; z-index: 9; pointer-events: none; background: #18181b; border: 1px solid #27272a; border-radius: 10px;
+  padding: 9px 12px; font-size: 12px; box-shadow: 0 12px 32px #000c; }
+.tip b { display: block; font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+.tip span { display: flex; align-items: center; gap: 7px; color: #a1a1aa; font-variant-numeric: tabular-nums; }
+.tip span i { width: 7px; height: 7px; border-radius: 50%; }
+@keyframes fade { from { opacity: 0; transform: translateY(6px); } }
+.in { animation: fade .6s cubic-bezier(.2,.8,.2,1) both; }
+@media (prefers-reduced-motion: reduce) { .in { animation: none; } }
+@media (max-width: 600px) { header, footer { padding: 16px 18px; } main { padding: 8px 18px 24px; } }

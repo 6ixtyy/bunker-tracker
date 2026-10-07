@@ -1,0 +1,34 @@
+org:
+  slug: bitfinex
+  name: Bitfinex
+  website: https://www.bitfinex.com
+  scope: "Cold storage · list last updated 2022"
+# Source file last changed 2022-12-12, so newer wallets may be missing.
+addresses:
+  - address: "3JZq4atUahhuA9rLhXLMhhTo133J9rF97j"
+    role: cold
+    confidence: high
+    source_url: "https://github.com/bitfinexcom/pub/blob/main/wallets.txt"
+    source_type: org_statement
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Listed as 'BTC cold wallet'"
+  - address: "bc1qgdjqv0av3q56jvd82tkdjpy7gdp9ut8tlqmgrpmv24sq90ecnvqqjwvw97"
+    role: cold
+    confidence: high
+    source_url: "https://github.com/bitfinexcom/pub/blob/main/wallets.txt"
+    source_type: org_statement
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Listed as 'BTC cold wallet'"
+  - address: "1Kr6QSydW9bFQG1mXiPNNu6WpJGmUa9i1g"
+    role: hot
+    confidence: high
+    source_url: "https://github.com/bitfinexcom/pub/blob/main/wallets.txt"
+    source_type: org_statement
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Listed as 'BTC hot wallet'"

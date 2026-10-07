@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunker Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+#chart { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px 24px; }
+.ring { text-align: center; }
+.ring svg { width: 100%; max-width: 190px; height: auto; display: block; margin: 0 auto 14px; overflow: visible; }
+.ring circle { fill: none; stroke-width: 12; stroke-linecap: round; transform: rotate(-90deg); transform-origin: 50% 50%; }
+.ring .pct { font-size: 30px; fill: var(--ink); }
+@media (max-width: 600px) { #chart { grid-template-columns: repeat(2, 1fr); gap: 36px 12px; } }
+</style>
+</head>
+<body>
+<main><div id="chart"></div></main>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="shell.js"></script>
+<script>
+const R = 80, C = 2 * Math.PI * R, GAP = 16;
+document.getElementById("chart").innerHTML = ORGS.map((o, i) => {
+  const f = o.pct / 100, both = f > 0 && f < 1;
+  const x = f * C - (both ? GAP : 0), h = (1 - f) * C - (both ? GAP : 0);
+  return `<div class="ring in" style="animation-delay:${i * 70}ms" data-tip="${orgTip(o)}">
+    <svg viewBox="0 0 200 200" role="img" aria-label="${esc(o.name)} ${fmt(o.pct, 1)}% exposed">
+      <circle cx="100" cy="100" r="${R}" stroke="var(--faint)"/>
+      ${h > 0 ? `<circle cx="100" cy="100" r="${R}" stroke="var(--h)" stroke-dasharray="${h} ${C}" stroke-dashoffset="${-(f * C + GAP / 2)}"/>` : ""}
+      ${x > 0 ? `<circle cx="100" cy="100" r="${R}" stroke="var(--x)" stroke-dasharray="${x} ${C}" stroke-dashoffset="${-(both ? GAP / 2 : 0)}"/>` : ""}
+      <text class="pct" x="100" y="110" text-anchor="middle">${pct0(o.pct)}%</text>
+    </svg>
+    <div class="name">${esc(o.name)}</div><div class="dim" style="font-size:12px">${fmt(o.totalBtc / 1000)}k BTC</div>
+  </div>`;
+}).join("");
+</script>
+</body>
+</html>

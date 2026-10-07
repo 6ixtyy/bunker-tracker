@@ -1,0 +1,527 @@
+org:
+  slug: binance
+  name: Binance
+  website: https://www.binance.com
+  scope: "Hot + cold, listed together"
+  claimed_reserves:
+    btc: 648155.20394208
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    as_of: "2026-10-01"
+    note: "Sum of BTC-network balances in PR01OCT26_HotCold.csv at BTC block height 969369"
+# Source file: https://public.bnbstatic.com/static/proof-of-reserve/wallet_address_20261001.zip
+# (PR01OCT26_HotCold.csv, audit id PR01OCT26). The file lists hot and cold
+# addresses together without saying which is which, so every role is unknown.
+addresses:
+  - address: "34xp4vRoCGJym3xR7yCVPFHoCNxv4Twseo"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3M219KR5vEneNb47ewrPfWyb5jQ2DjxRP6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3LQUu4v9z6KNch71j7kbj8GPeAGUo1FW6a"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3FHNBLobJnbCTFTVakh5TXmEneyf5PT61B"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1PJiGp2yDLvUgqeBsuZVCBADArNsk6XEiw"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "34HpHYiyQwg69gFmCq2BGHjF1DZnZnBeBP"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qm34lsc65zpw79lxes69zkqmk6ee3ewf0j77s3h"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "12VuUfQHTGqWDvBzm8TBad1mZBm4hjGEzN"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "32z4XkTCBMp4QfcoobxaXtJkWngyHqGjHp"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "39CnKMu9KWvFAabLJ5BYghVfSqHgC2VShe"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q32lyrhp9zpww22phqjwwmelta0c8a5q990ghs6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Third party custodian: Ceffu"
+  - address: "bc1q7t9fxfaakmtk8pj7tdxjvwsng6y9x76czuaf5h"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "34ryUknRsda7w9yXqzjLhgRPZLPV43rpsd"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1KuPikhUYtHz3fmSQ2UvotpUuN672NuEcm"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1DEuKerATHWRfyB14s6QCt4LPkfCTx4zaW"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qhnkhmyx43k9uewvftqup259yp8h39wj2ewc50h"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Third party custodian: Ceffu"
+  - address: "33TDwJRsFJbtSEwkXGwtJkj3Ey3Gman3TV"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3HdGoUTbcztBnS7UzY4vSPYhwr424CiWAA"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3LcgLHzTvjLKBixBvkKGiadtiw2GBSKKqH"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "395vnFScKQ1ay695C6v7gf89UzoFpx3WuJ"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q5qvs2dzzydqt4ygfn0k0ertjnv8ctytgcdz7l0"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qq393eyjh8hdjvcchy0mxquhh9wx8h3kzlkchfs"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Third party custodian: Ceffu"
+  - address: "bc1q9n7j6a5wwru6tad9xrlncnagresvyjt96pl3en"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3BzYxZXkdpkrFTWzKkWGRoWXJMuN2Ko621"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qdtmav38lca8yu3rrcknnqx5242cckgxqws7m72"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qquax5zzensg9mkejdgq3q3h76v34cug96zk0f6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "31jUs8yQNVc9p6YuUPctWCkdhH7u8UiUba"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3KRduELtTmxBtqYpZviPysXoJDxdtdxFLZ"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3Kyo49ThRZPMukuYqPgqPejYeUpHvkA1EM"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q5rsc4uscnmemlwru8xsys26k3xgxewqfnf3k7j"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3AeUiDpPPUrUBS377584sFCpx8KLfpX9Ry"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1PPWMe42cywnM61nVatkmiggwdRQYLiCyS"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1Pzaqw98PeRfyHypfqyEgg5yycJRsENrE7"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3HkPQSi1xso1Zh1EeqLjkMpura63fr5HRn"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3JFJPpH8Chwo7CDbyYQ4XcfgcjEP1FGRMJ"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3Q6ZCgJ3e4shasccLHen1VNUpReZTsjmsR"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3FJ9hQuRtzy7pCqKHjeBGRDcY3fJbhHYXD"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q5n5dy7jgqhmpnmx44d3780qefzaphjreds0z9y"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "36yB51gULVXXnvyWmvAoCVjq6igZUiHf3y"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3F1ZmTDAv6q3xrnT3tpm55DkCDzxhstU2Z"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3Nm3c4gqVmvCmeP1sYvDchbb1r4QMu6emn"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q78ufzeu8w8fwvxuphrdlg446xhyptf28fkatu5"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "Third party custodian: Ceffu"
+  - address: "3E97AjYaCq9QYnfFMtBCYiCEsN956Rvpj2"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3HkgC2R5PhqyXy6RVFyemvxN1VuFbQiQ5V"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3PXBET2GrTwCamkeDzKCx8DeGDyrbuGKoc"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3M3EtJGx5Dy9nCATLDhyRCrKGc38QC9z2e"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "32bhzEniykYRFADVaRM5PYswsjC23cxtes"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "32KqbtrRVxC6GLUJgJhVQtFTaCdq4GrgBb"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3CySuFKbBS29M7rE5iJakZRNqb3msMeFoN"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "378GLcve92X2Q4UrCyoMFDL5k5QrzeG7JN"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3QK5vQ9hucSg8ZC8Vizq83qEWeHFLAWMud"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3AQ8bAh88TQU7JV1H3ovXrwsuV6s3zYZuN"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "36oiSkAi1VVuUpfdv8E2V5fZ2EarHRJpis"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "32BgTv3NSYbMsBTwDbNNN2GKZPCTJSkqDv"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3NjHh71XgjikBoTNYdWgXiNeZcLaKNThgb"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3AtnehKDkFPC1bKvdrEVPSRGCtxQH8F1R8"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "3EVVc8e2rxwUuERtdJCduWig8DnpsUqyA6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.binance.com/en/proof-of-reserves"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""

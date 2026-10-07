@@ -1,0 +1,228 @@
+org:
+  slug: bybit
+  name: Bybit
+  website: https://www.bybit.com
+  claimed_reserves:
+    btc: 58721.99463723
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    as_of: "2026-09-23"
+    note: "BTC-Bitcoin row of bybit_por_202609.csv at BTC block height 968217"
+# Source file: https://www.bybit.com/common-static/por/bybit_por_202609.csv
+# The file does not say which addresses are hot or cold.
+addresses:
+  - address: "bc1q2qqqt87kh33s0er58akh7v9cwjgd83z5smh9rp"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1GrwDkr33gT6LuumniYjKEGjTLhsL5kmqC"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qs5vdqkusz4v7qac8ynx0vt9jrekwuupx2fl5udp9jql3sr03z3gsr2mf0f"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "16jVbMCcqq1deKrMB3esL2HPso7kvqUsec"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qa2eu6p5rl9255e3xz7fcgm6snn4wl5kdfh7zpt05qp5fad9dmsys0qjg0e"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "139RYdfv7vNtbnK88juMR3s4pgwvB4db9Y"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1Ko6Sbu8VgZaQNZMfRgNjR8zVzVN9wL7aX"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1LrsskS2hmLvevKiqASDymS8xRmJ7Gp83u"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "14ug9BVtGnxY8ezvd5cr1PXHeXBYXkpsdw"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "12rFmDggwCNrRL6vuPEjzCDSskTRPjDajP"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1KHch51TT2eazxYkUXtr38GXtPTjf8Mue"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qmv30sf5tnlx52x6vszl0gmey7vae6elzpm2zxw"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qpz86ltanq6042k36rs0yl0wjpd6tgu8fwckan7"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q7enk8z5gkuzk2sla4vnmzh5qq8jq6wptx0pty5"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "12XZMdaAGmcHf4ocFSqpd8jFd1WH7RHUPs"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1DLeNApsHNNzUMNZJVoXeyEY5sdp8vzx3w"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1Nb9NUVWpjruzafXh2uKK5v5xxEEL1hPrH"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "1HDnsptgeJ6fYFHCgd1TFzLSRpuVcV51GL"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q59nmn5v9tz36talq7g090yue5kf7actqr62f96kakte70eu2948sw6ddxr"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q0npwm7hphq4w3pn0m4nr5hmum2sdg725edylgn"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qqc0h2sxt9lvrsqt90rtpjqnjj7qcwv457g28h2"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qr7dl0rtnfvzkfqrvctpk068c8zluknkzapwhe9"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1qknl6p2cmw30cyx3fz4sdvjjqf6sj682qndcerk"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""
+  - address: "bc1q3krff4s70lx4wfgnrr0ux2c09flcp5rgs2d8k6"
+    role: unknown
+    confidence: high
+    source_url: "https://www.bybit.com/en/app/user/reserve-ratio"
+    source_type: por_list
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: ""

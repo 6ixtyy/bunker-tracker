@@ -1,0 +1,18 @@
+org:
+  slug: tether
+  name: Tether
+  website: https://tether.to
+  scope: "Main treasury address"
+# Confirmed by Tether's CEO in a public X post on 2025-09-07 ("the vast majority
+# of our bitcoin holdings are held directly: <address>"). source_url is a news
+# report quoting the post; replace it with the post's own URL when found.
+addresses:
+  - address: "bc1qjasf9z3h7w3jspkhtgatgpyvvzgpa2wwd2lr0eh5tx44reyn2k7sfc27a4"
+    role: treasury
+    confidence: medium
+    source_url: "https://www.bitget.com/news/detail/12560604954891"
+    source_type: org_statement
+    pubkey_published: false
+    pubkeys: []
+    added: "2026-10-07"
+    notes: "CEO statement on X, 2025-09-07: the vast majority of our bitcoin holdings are held directly at this address. Cited via a news report; original post URL not yet recorded"

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bunker Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.row { display: grid; grid-template-columns: 110px 1fr 64px; align-items: start; gap: 20px; padding: 14px 0; }
+.dots { display: flex; flex-wrap: wrap; gap: 5px; padding-top: 4px; }
+.dots i { width: 11px; height: 11px; border-radius: 50%; animation: fade .5s both; }
+.row .pct { text-align: right; font-size: 20px; }
+.unit { margin-top: 18px; font-size: 12px; }
+@media (max-width: 600px) { .row { grid-template-columns: 78px 1fr 52px; gap: 12px; } .dots { gap: 4px; } .dots i { width: 9px; height: 9px; } }
+</style>
+</head>
+<body>
+<main><div id="chart"></div></main>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script src="shell.js"></script>
+<script>
+const UNIT = 5000;
+document.getElementById("chart").innerHTML = ORGS.map(o => {
+  const n = Math.max(1, Math.round(o.totalBtc / UNIT)), x = Math.round(o.exposedBtc / UNIT);
+  let d = "";
+  for (let k = 0; k < n; k++) d += `<i style="background:var(--${k < x ? "x" : "h"});animation-delay:${k * 6}ms"></i>`;
+  return `<div class="row" data-tip="${orgTip(o)}"><div class="name">${esc(o.name)}</div>
+    <div class="dots" role="img" aria-label="${esc(o.name)} ${fmt(o.pct, 1)}% exposed">${d}</div><div class="pct">${pct0(o.pct)}%</div></div>`;
+}).join("") + '<div class="unit dim">1 dot = 5,000 BTC</div>';
+</script>
+</body>
+</html>

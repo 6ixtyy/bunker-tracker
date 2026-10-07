@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="How much of each institution's published Bitcoin sits behind exposed public keys versus hidden ones.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>bunker mode</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #0e1220; --card: #171d30; --edge: #232b45; --ink: #fff; --soft: #b5bddb; --muted: #8087a6;
+  --x1: #ff3d8b; --x2: #ff6a3d; --x3: #ffb347; --h1: #00ffa3; --h2: #3ee6ff; --h3: #5b8cff;
+  --gx: linear-gradient(90deg, var(--x1), var(--x2) 55%, var(--x3)); --gh: linear-gradient(90deg, var(--h1), var(--h2) 60%, var(--h3));
+  --mono: "Roboto Mono", ui-monospace, monospace; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 300 14px/1.5 "Inter", system-ui, sans-serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+.aurora { position: absolute; inset: 0 0 auto 0; height: 620px; pointer-events: none; overflow: hidden; }
+.aurora i { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; animation: drift 16s ease-in-out infinite alternate; }
+.aurora i:nth-child(1) { width: 520px; height: 380px; left: 50%; top: -60px; margin-left: -420px; background: #ff3d8b; }
+.aurora i:nth-child(2) { width: 460px; height: 360px; left: 50%; top: 10px; margin-left: -80px; background: #ff6a3d; animation-delay: -5s; opacity: .38; }
+.aurora i:nth-child(3) { width: 520px; height: 340px; left: 50%; top: 80px; margin-left: 60px; background: #00c389; animation-delay: -9s; opacity: .34; }
+@keyframes drift { to { transform: translate3d(60px, 30px, 0) scale(1.15); } }
+.wrap { position: relative; max-width: 1180px; margin: 0 auto; padding: 24px 20px 48px; }
+.top { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip { font-family: var(--mono); font-size: 12px; color: var(--soft); background: #171d30cc; border: 1px solid var(--edge); border-radius: 6px; padding: 6px 10px; backdrop-filter: blur(8px); }
+.chip b { font-weight: 400; color: var(--ink); }
+h1 { font-weight: 200; font-size: clamp(46px, 9vw, 92px); letter-spacing: -0.02em; line-height: 1; text-align: center; margin: 84px 0 96px;
+  background: linear-gradient(90deg, var(--x1), var(--x2) 38%, var(--x3) 55%, var(--h1) 78%, var(--h2)); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent; animation: slide 9s ease-in-out infinite alternate; }
+@keyframes slide { to { background-position: 100% 0; } }
+h2 { font-weight: 200; font-size: 34px; text-align: center; margin: 88px 0 6px; }
+.sub { text-align: center; color: var(--muted); font-size: 17px; margin: 0 0 44px; }
+.grid { display: grid; gap: 16px; }
+.g2 { grid-template-columns: 1.25fr 1fr; }
+.card { background: linear-gradient(180deg, #19203599, #151b2d) , var(--card); border: 1px solid var(--edge); border-radius: 10px; padding: 28px 30px; position: relative; overflow: hidden; }
+.card::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 1px; background: linear-gradient(90deg, transparent, #ffffff30, transparent); }
+.lab { font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--soft); display: flex; justify-content: space-between; gap: 12px; }
+.lab span { color: var(--muted); }
+.num { font-family: var(--mono); font-weight: 300; font-size: clamp(28px, 4vw, 40px); letter-spacing: -0.03em; line-height: 1.15; margin-top: 14px; }
+.num small { font-size: .55em; color: var(--soft); letter-spacing: 0; margin-left: 6px; }
+.gx, .gh { -webkit-background-clip: text; background-clip: text; color: transparent; }
+.gx { background-image: var(--gx); } .gh { background-image: var(--gh); }
+.meta { font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 6px; }
+.stack { display: grid; gap: 16px; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { font-family: var(--mono); }
+.glowx { filter: drop-shadow(0 0 10px #ff6a3d70); } .glowh { filter: drop-shadow(0 0 10px #00ffa360); }
+.seg { transition: opacity .15s; } svg:hover .seg { opacity: .55; } svg .seg:hover { opacity: 1; }
+.rise { animation: rise .9s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } }
+.gauges { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.gauge { text-align: center; }
+.gauge .arc { stroke-dasharray: var(--v) 100; animation: fill 1.4s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes fill { from { stroke-dasharray: 0 100; } }
+.gauge .needle { transform-origin: 100px 104px; transform: rotate(var(--a)); animation: swing 1.4s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes swing { from { transform: rotate(-120deg); } }
+.gauge .n { font-family: var(--mono); font-size: 26px; letter-spacing: -0.03em; margin-top: -16px; }
+.gauge .o { font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--soft); margin-top: 4px; }
+.gauge .b { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.row { display: grid; grid-template-columns: 22px 112px 1fr auto; gap: 12px; align-items: center; padding: 9px 0; border-top: 1px solid #ffffff0d; font-family: var(--mono); font-size: 13px; }
+.row:first-of-type { border-top: 0; margin-top: 12px; }
+.row .r { color: var(--muted); } .row .a { color: var(--muted); font-size: 11px; display: block; white-space: nowrap; }
+.row .bar { height: 4px; border-radius: 2px; background: var(--gx); box-shadow: 0 0 12px #ff6a3d80; transform-origin: left; animation: grow 1s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes grow { from { transform: scaleX(0); } }
+.split { display: flex; gap: 3px; height: 10px; margin: 22px 0 18px; }
+.split i { border-radius: 5px; min-width: 6px; }
+.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.trio b { display: block; font: 300 22px var(--mono); letter-spacing: -0.03em; }
+.trio span { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.dots { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 18px; }
+.dots i { width: 9px; height: 9px; border-radius: 50%; }
+.dots .x { background: var(--x2); box-shadow: 0 0 6px #ff6a3d90; } .dots .h { background: var(--h1); box-shadow: 0 0 6px #00ffa390; }
+footer { margin-top: 56px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
+footer a { color: var(--soft); text-decoration: none; margin-left: 14px; } footer a:hover { color: var(--ink); }
+.tip { position: fixed; z-index: 9; pointer-events: none; background: #0e1220f2; border: 1px solid var(--edge); border-radius: 8px; padding: 9px 12px;
+  font-family: var(--mono); font-size: 12px; max-width: 280px; box-shadow: 0 16px 40px #000a; }
+.tip b { display: block; font: 400 13px "Inter", sans-serif; letter-spacing: 1px; text-transform: uppercase; color: var(--soft); margin-bottom: 2px; }
+.tip span, .tip i { display: block; font-style: normal; color: var(--soft); }
+@media (max-width: 900px) { .g2 { grid-template-columns: 1fr; } .gauges { grid-template-columns: repeat(3, 1fr); row-gap: 28px; } }
+@media (max-width: 520px) { .card { padding: 22px 18px; } .gauges { grid-template-columns: repeat(2, 1fr); } h1 { margin: 60px 0 68px; } .trio b { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before { animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="aurora"><i></i><i></i><i></i></div>
+<div class="wrap">
+  <div class="top" id="chips"></div>
+  <h1>bunker mode</h1>
+
+  <div class="grid g2">
+    <div class="card">
+      <div class="lab">Above &amp; below ground <span>BTC by address</span></div>
+      <div id="towers" style="margin-top:18px"></div>
+    </div>
+    <div class="stack">
+      <div class="card"><div class="lab">Exposed keys <span id="xp"></span></div><div class="num" id="xn"></div><div class="meta" id="xm"></div></div>
+      <div class="card"><div class="lab">Hidden behind a hash <span id="hp"></span></div><div class="num" id="hn"></div><div class="meta" id="hm"></div></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <div class="lab">Exposed share <span>per institution</span></div>
+    <div class="gauges" id="gauges" style="margin-top:22px"></div>
+  </div>
+
+  <h2>addresses</h2>
+  <p class="sub">the biggest keys above ground</p>
+
+  <div class="grid g2">
+    <div class="card"><div class="lab">Largest exposed <span>BTC</span></div><div id="board"></div></div>
+    <div class="stack">
+      <div class="card"><div class="lab">How keys got exposed</div><div class="split" id="split"></div><div class="trio" id="trio"></div></div>
+      <div class="card"><div class="lab">Tracked supply <span>1 dot = 5,000 BTC</span></div><div class="dots" id="dots"></div></div>
+    </div>
+  </div>
+
+  <footer><span>Exposure is not a vulnerability today.</span><span><a href="addresses.html">all addresses</a><a href="ultra2.html">version 2</a><a href="v1.html">other views</a></span></footer>
+</div>
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const ALL = ORGS.reduce((s, o) => s + o.totalBtc, 0), X = ORGS.reduce((s, o) => s + o.exposedBtc, 0), Hd = ALL - X;
+const nAddr = ORGS.reduce((s, o) => s + o.rows.length, 0);
+$("chips").innerHTML = `<span class="chip">block <b>${fmt(SNAP.tip_height)}</b></span><span class="chip"><b>${fmt(ALL)}</b> BTC tracked</span><span class="chip"><b>${nAddr}</b> addresses</span>`;
+$("xp").textContent = fmt(X / ALL * 100, 1) + "%"; $("hp").textContent = fmt(Hd / ALL * 100, 1) + "%";
+$("xn").innerHTML = `<span class="gx">${fmt(X)}</span><small>BTC</small>`;
+$("hn").innerHTML = `<span class="gh">${fmt(Hd)}</span><small>BTC</small>`;
+$("xm").textContent = `${ORGS.reduce((s, o) => s + o.exposed.length, 0)} addresses · ${ORGS.length} institutions`;
+$("hm").textContent = `${ORGS.reduce((s, o) => s + o.hidden.length, 0)} addresses · ${ORGS.filter(o => o.hidden.length).length} institutions`;
+
+const DEFS = `<defs>
+  <linearGradient id="gx" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#ff3d8b"/><stop offset=".6" stop-color="#ff6a3d"/><stop offset="1" stop-color="#ffb347"/></linearGradient>
+  <linearGradient id="gh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00ffa3"/><stop offset=".7" stop-color="#3ee6ff"/><stop offset="1" stop-color="#5b8cff"/></linearGradient>
+  <linearGradient id="ax" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ff3d8b"/><stop offset=".6" stop-color="#ff6a3d"/><stop offset="1" stop-color="#ffb347"/></linearGradient>
+  <linearGradient id="ah" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00ffa3"/><stop offset="1" stop-color="#3ee6ff"/></linearGradient>
+  <linearGradient id="gl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+</defs>`;
+
+// Towers: one glowing column per institution, split into addresses, around a ground line.
+(function () {
+  const W = 640, UP = 250, S = UP / MAX_EXPOSED, G = 44 + UP, DOWN = MAX_HIDDEN * S, H = G + DOWN + 46, step = W / ORGS.length, bw = 46;
+  let s = DEFS;
+  ORGS.forEach((o, i) => {
+    const cx = step * (i + .5), x = cx - bw / 2, big = r => btc(r) * S >= 5;
+    let y = G - 4, top = y, part = "";
+    blocks(o.exposed, big).forEach(b => { const h = Math.max(2, b.v * S - 2); y -= h + 2; top = y + 2;
+      part += `<rect class="seg" x="${x}" y="${y + 2}" width="${bw}" height="${h}" rx="3" data-tip="${esc(tipHtml(o, b, true))}"/>`; });
+    s += `<g class="glowx rise" fill="url(#gx)" style="animation-delay:${i * 80}ms">${part}</g>`;
+    y = G + 4; part = "";
+    blocks(o.hidden, big).forEach(b => { const h = Math.max(2, b.v * S - 2);
+      part += `<rect class="seg" x="${x}" y="${y}" width="${bw}" height="${h}" rx="3" data-tip="${esc(tipHtml(o, b, false))}"/>`; y += h + 2; });
+    if (part) s += `<g class="glowh rise" fill="url(#gh)" style="animation-delay:${i * 80 + 200}ms">${part}</g>`;
+    s += `<text x="${cx}" y="${top - 12}" text-anchor="middle" font-size="15" font-weight="300" fill="#fff">${pct0(o.pct)}%</text>
+      <text x="${cx}" y="${H - 6}" text-anchor="middle" font-size="10.5" letter-spacing="1" fill="#b5bddb" style="font-family:Inter,sans-serif;text-transform:uppercase">${esc(o.name)}</text>`;
+  });
+  s += `<rect x="0" y="${G - .75}" width="${W}" height="1.5" fill="url(#gl)"/>`;
+  $("towers").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Exposed BTC above the ground line and hidden BTC below, per institution">${s}</svg>`;
+})();
+
+// Gauges: 240° dial, needle at the exposed share.
+$("gauges").innerHTML = ORGS.map((o, i) => {
+  const f = o.pct / 100, hot = f >= .5, pt = a => { const r = a * Math.PI / 180; return `${100 + 72 * Math.sin(r)} ${104 - 72 * Math.cos(r)}`; };
+  const d = `M ${pt(-120)} A 72 72 0 1 1 ${pt(120)}`;
+  return `<div class="gauge" data-tip="${esc(`<b>${esc(o.name)}</b><span>${fmt(o.exposedBtc)} BTC exposed</span><span>${fmt(o.hiddenBtc)} BTC hidden</span><i>${esc(o.label)}</i>`)}">
+    <svg viewBox="0 0 200 170" role="img" aria-label="${esc(o.name)} ${pct0(o.pct)}% exposed">${i ? "" : DEFS}
+      <path d="${d}" fill="none" stroke="#2a3250" stroke-width="9" stroke-linecap="round"/>
+      <path class="arc ${hot ? "glowx" : "glowh"}" d="${d}" pathLength="100" fill="none" stroke="url(#${hot ? "ax" : "ah"})" stroke-width="9" stroke-linecap="round" style="--v:${(f * 100).toFixed(2)};animation-delay:${i * 90}ms"/>
+      <g class="needle" style="--a:${(-120 + 240 * f).toFixed(1)}deg;animation-delay:${i * 90}ms"><path d="M100 104 L97.5 100 L100 46 L102.5 100 Z" fill="#fff" opacity=".9"/></g>
+      <circle cx="100" cy="104" r="5" fill="#171d30" stroke="#fff" stroke-width="1.5"/>
+    </svg>
+    <div class="n ${hot ? "gx" : "gh"}">${pct0(o.pct)}%</div><div class="o">${esc(o.name)}</div><div class="b">${fmt(o.totalBtc / 1000)}k BTC</div></div>`;
+}).join("");
+
+// Largest exposed addresses.
+(function () {
+  const top = ORGS.flatMap(o => o.exposed.map(r => ({ o, r }))).sort((a, b) => b.r.balance_sats - a.r.balance_sats).slice(0, 8), max = btc(top[0].r);
+  $("board").innerHTML = top.map((t, i) => `<div class="row" data-tip="${esc(tipHtml(t.o, { v: btc(t.r), rows: [t.r] }, true))}">
+    <span class="r">${i + 1}</span><span>${esc(t.o.name)}<span class="a">${esc(short(t.r.address))}</span></span>
+    <span><span class="bar" style="display:block;width:${btc(t.r) / max * 100}%;animation-delay:${i * 60}ms"></span></span><span>${fmt(btc(t.r))}</span></div>`).join("");
+})();
+
+// Why exposed, and the whole tracked supply as dots.
+(function () {
+  const sum = k => ORGS.reduce((s, o) => s + o.exposed.filter(r => r.reason === k).reduce((a, r) => a + btc(r), 0), 0);
+  const parts = [["has spent", sum("spent_address"), "var(--gx)", "gx"], ["key published", sum("pubkey_published") + sum("taproot"), "linear-gradient(90deg,#ffb347,#ffe27a)", "gx"], ["never exposed", Hd, "var(--gh)", "gh"]];
+  $("split").innerHTML = parts.map(p => `<i style="flex:${p[1]};background:${p[2]}"></i>`).join("");
+  $("trio").innerHTML = parts.map(p => `<div><b class="${p[3]}">${fmt(p[1] / 1000)}k</b><span>${p[0]}</span></div>`).join("");
+  const n = Math.round(ALL / 5000), x = Math.round(X / 5000);
+  $("dots").innerHTML = Array.from({ length: n }, (_, k) => `<i class="${k < x ? "x" : "h"}"></i>`).join("");
+})();
+</script>
+</body>
+</html>
