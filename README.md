@@ -47,3 +47,7 @@ Public explorers rate-limit, so a full run can take around 15 minutes.
 
 Open an issue with the address, the organization, and a link to a source the
 organization itself published.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
